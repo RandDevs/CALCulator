@@ -1,0 +1,281 @@
+* {
+	box-sizing: border-box;
+}
+:root {
+	--bgc: #181823;
+	--accent-color: #9775fd;
+	--second-bgc: #effffd;
+}
+body.dark {
+	--bgc: #18191a;
+	--second-bgc: #dce6e5;
+}
+body {
+	background-color: #d3dbda;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+.calculator {
+	width: 300px;
+	height: 90vh;
+	border-radius: 1.4em;
+	overflow: hidden;
+	background-color: var(--second-bgc);
+	color: var(--second-bgc);
+	font-family: "Poppins";
+	transition: 0.3s;
+	position: relative;
+	box-shadow: 3px 3px 15px var(--bgc);
+}
+
+.display-output {
+	background-color: var(--bgc);
+	width: 100%;
+	height: 40%;
+	border-radius: 0 0 10px 10px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	transition: 0.3s;
+}
+
+.dark-mode {
+	width: 170px;
+	height: 40px;
+	padding: 8px 10px;
+	border-radius: 10px;
+	background-color: var(--second-bgc);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: 0.3s;
+}
+.dark-mode .text-mode {
+	color: var(--bgc);
+	font-weight: 600;
+	height: 100%;
+	width: 100px;
+	display: flex;
+	align-items: center;
+}
+.dark-mode .toggle-switch {
+	height: 100%;
+	width: 45px;
+	background-color: var(--bgc);
+	border-radius: 15px;
+	position: relative;
+	padding: 3px;
+	cursor: pointer;
+}
+.dark-mode .toggle-switch::after {
+	content: "";
+	position: absolute;
+	background-color: var(--second-bgc);
+	width: 17.5px;
+	height: 17.5px;
+	border-radius: 50%;
+	top: 50%;
+	left: 4px;
+	transform: translateY(-50%);
+	transition: 0.3s;
+}
+
+.dark-mode .active.toggle-switch::after {
+	left: 23px;
+}
+
+.calculation {
+	width: 100%;
+	height: 80px;
+}
+.history-calculation {
+	width: 100%;
+	height: 30px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: flex;
+	align-items: center;
+	justify-content: right;
+	font-size: 18px;
+	color: var(--accent-color);
+}
+.real-calculation {
+	width: 100%;
+	height: calc(100% - 30px);
+	text-align: right;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	font-weight: 700;
+	font-size: 24px;
+	overflow: hidden;
+}
+
+.buttons-input {
+	padding: 15px 20px;
+	height: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: var(--second-bgc);
+	transition: 0.3s;
+}
+
+.buttons-input .row {
+	display: flex;
+	justify-content: space-between;
+}
+
+.buttons-input .row button {
+	border-radius: 10px;
+	box-shadow: 5px 5px 14px #bdc9c8, -5px -5px 14px #ffffff;
+	background: #effffd;
+	border: none;
+	width: 55px;
+	height: 55px;
+	font-family: "Poppins";
+	font-weight: 700;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.buttons-input .row button:active {
+	box-shadow: inset 5px 5px 14px #bdc9c8, inset -5px -5px 14px #ffffff;
+}
+
+.buttons-input .row button.backspace img {
+	width: 100%;
+	height: 90%;
+}
+
+.buttons-input .row button.equal-to {
+	background-color: var(--accent-color);
+	color: var(--second-bgc);
+}
+
+.buttons-input .row button.all-clear {
+	width: calc(50% - 8px);
+}
+
+/* Dark Mode Handler */
+
+body.dark .calculator {
+	background-color: var(--bgc);
+}
+
+body.dark .display-output {
+	transition: 0.3s;
+	position: relative;
+	z-index: 1;
+	background: linear-gradient(145deg, #1a1b1c, #161717);
+	box-shadow: 5px 5px 16px #0a0a0a;
+}
+
+body.dark .buttons-input {
+	background-color: var(--bgc);
+}
+
+body.dark .buttons-input .row button {
+	color: var(--second-bgc);
+	background: linear-gradient(145deg, #1a1b1c, #161717);
+	box-shadow: 5px 5px 16px #0a0a0a;
+}
+
+body.dark .buttons-input .row button:active:not(.backspace) {
+	box-shadow: inset 5px 5px 16px #0a0a0a, inset -5px -5px 16px #26282a;
+}
+
+body.dark .buttons-input .row button.backspace {
+	background: var(--second-bgc);
+}
+
+body.dark .buttons-input .row button.all-clear {
+	background: var(--second-bgc);
+	color: var(--bgc);
+}
+
+body.dark .buttons-input .row button.all-clear:active {
+	box-shadow: none;
+}
+
+/* Media Queries */
+
+@media screen and (min-height: 1024px) {
+	.calculator {
+		width: 400px;
+		height: 80vh;
+	}
+	.buttons-input .row button {
+		width: 80px;
+		height: 80px;
+		font-size: 28px;
+	}
+	.display-output {
+		padding: 25px;
+	}
+	.dark-mode {
+		width: 180px;
+		height: 50px;
+	}
+	.dark-mode .text-mode {
+		font-size: 16px;
+	}
+	.dark-mode .toggle-switch {
+		width: 50px;
+		height: 80%;
+	}
+	.dark-mode .active.toggle-switch::after {
+		left: 28.5px;
+	}
+	.history-calculation {
+		font-size: 24px;
+	}
+	.real-calculation {
+		font-size: 32px;
+	}
+}
+@media screen and (max-height: 576px) {
+	.calculator {
+		width: 250px;
+		min-height: 400px;
+	}
+	.display-output {
+		padding: 15px;
+	}
+	.dark-mode {
+		width: 150px;
+		height: 30px;
+		padding: 5px 8px;
+	}
+	.dark-mode .text-mode {
+		font-size: 14px;
+	}
+	.dark-mode .toggle-switch {
+		width: 40px;
+	}
+
+	.dark-mode .toggle-switch::after {
+		width: 15px;
+		height: 15px;
+		left: 3.5px;
+	}
+	.dark-mode .active.toggle-switch::after {
+		left: 20px;
+	}
+	.calculation {
+		height: 60px;
+	}
+
+	.buttons-input .row button {
+		width: 40px;
+		height: 40px;
+	}
+}
